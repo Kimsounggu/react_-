@@ -16,8 +16,8 @@ const App = () => {
     },
   ]);
 
-  const [newTitle, setNewTitle] = useState("");
-  const [newContent, setNewContent] = useState("");
+  const [title, setNewTitle] = useState("");
+  const [content, setNewContent] = useState("");
 
   const handleTitleChange = (event) => {
     setNewTitle(event.target.value);
@@ -28,8 +28,8 @@ const App = () => {
   const addText = () => {
     const newText = {
       id: new Date().getTime(),
-      title: newTitle,
-      content: newContent,
+      title: title,
+      content: content,
       isDone: false,
     };
     setText([...text, newText]);
@@ -42,18 +42,16 @@ const App = () => {
   return (
     <div>
       <div style={{ backgroundColor: "gainsboro" }}>
-        <h1>myTodoList</h1>
-        <header className="inputStyle">
-          <div>
-            제목:
-            <input type="text" onChange={handleTitleChange} />
-          </div>
-          <div>
-            내용:
-            <input type="text" onChange={handleContentChange} />
-          </div>
-          <button onClick={addText}>추가하기</button>
+        <header>
+          <h1>myTodoList</h1>
         </header>
+        <main>
+          제목:
+          <input type="text" onChange={handleTitleChange} />
+          내용:
+          <input type="text" onChange={handleContentChange} />
+          <button onClick={addText}>추가하기</button>
+        </main>
       </div>
       {text.map((textList) => (
         <Text
